@@ -2,7 +2,7 @@
 
 <% @solar_objects.each do |object| %>
 <div>
-  <h3><a href="/<%= object.id %>"><%= object.title %></a></h3>
+  <h3><a href="/index/<%= object.id %>"><%= object.title %></a></h3>
   <p><%= object.object_type %></p>
   <p><%= object.radius %></p>
 </div>

@@ -63,7 +63,7 @@ class SolarObject
 
     conn = self.open_connection
 
-    sql = "SELECT * FROM post WHERE id =#{id} LIMIT 1"
+    sql = "SELECT * FROM object WHERE id =#{id} LIMIT 1"
 
     posts = conn.exec(sql)
 

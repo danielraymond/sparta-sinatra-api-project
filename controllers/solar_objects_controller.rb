@@ -9,12 +9,22 @@ class SolarObjectsController < Sinatra::Base
       register Sinatra::Reloader
   end
 
-  get '/' do
+  get '/index' do
 
     @title = 'HELLO THERE THIS IS WORKING'
     @solar_objects = SolarObject.all
 
     erb :'solar_objects/index'
+
+  end
+
+  get '/index/:id' do
+
+    id = params[:id].to_i
+
+    @object = SolarObject.find(id)
+
+    erb :'solar_objects/show'
 
   end
 
