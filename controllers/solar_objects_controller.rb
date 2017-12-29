@@ -18,6 +18,14 @@ class SolarObjectsController < Sinatra::Base
 
   end
 
+  get '/index/new' do
+
+    @object = SolarObject.new
+
+    erb :'solar_objects/new'
+
+  end
+
   get '/index/:id' do
 
     id = params[:id].to_i
@@ -25,6 +33,62 @@ class SolarObjectsController < Sinatra::Base
     @object = SolarObject.find(id)
 
     erb :'solar_objects/show'
+
+  end
+
+  get '/index/:id/edit'  do
+
+    id = params[:id].to_i
+
+    # @post = $posts[id]
+    @object = SolarObject.find(id)
+
+    erb :'solar_objects/edit'
+
+  end
+
+  post '/index' do
+
+    object = SolarObject.new
+
+    object.title = params[:title]
+    object.object_type = params[:object_type]
+    object.radius = params[:radius]
+
+    object.save
+
+    redirect "/index"
+
+  end
+
+  put '/index/:id' do
+
+    id = params[:id].to_i
+
+    # variable of the current post information
+    # post = $posts[id]
+    object = SolarObject.find(id)
+
+    # manipulate the variable to be the new data
+    object.title = params[:title]
+    object.object_type = params[:object_type]
+    object.radius = params[:radius]
+
+    # changed the original data to the new data
+    object.save
+
+    redirect '/index'
+
+  end
+
+  delete '/index/:id'  do
+
+    id = params[:id].to_i
+
+    # $posts.delete_at(id)
+    SolarObject.destroy(id)
+
+    redirect '/index'
 
   end
 

@@ -1,0 +1,17 @@
+<form action = "/index" method="POST">
+  <div>
+    <label>Title</label>
+    <input type="text" name="title" placeholder="Enter a title" value="<%= @object.title %>">
+  </div>
+  <div>
+    <label>Object Type</label>
+    <input type="text" name="object_type" placeholder="Enter the object type" value="<%= @object.object_type %>">
+  </div>
+  <div>
+    <label>Radius</label>
+    <input type="float" name="radius" placeholder="Enter the radius of the object" value="<%= @object.radius %>">
+  </div>
+  <div>
+    <input type="submit" value="Save Object">
+  </div>
+</form>
