@@ -12,6 +12,7 @@ class SolarObjectsController < Sinatra::Base
   get '/' do
 
     @title = 'HELLO THERE THIS IS WORKING'
+    @solar_objects = SolarObject.all
 
     erb :'solar_objects/index'
 
