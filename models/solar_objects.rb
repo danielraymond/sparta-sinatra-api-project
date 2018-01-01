@@ -39,7 +39,7 @@ class SolarObject
 
     conn = self.open_connection
 
-    sql = "DELETE FROM post WHERE id = #{id}"
+    sql = "DELETE FROM object WHERE id = #{id}"
 
     conn.exec(sql)
 

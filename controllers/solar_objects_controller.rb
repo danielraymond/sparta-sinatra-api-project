@@ -40,7 +40,6 @@ class SolarObjectsController < Sinatra::Base
 
     id = params[:id].to_i
 
-    # @post = $posts[id]
     @object = SolarObject.find(id)
 
     erb :'solar_objects/edit'
@@ -65,8 +64,6 @@ class SolarObjectsController < Sinatra::Base
 
     id = params[:id].to_i
 
-    # variable of the current post information
-    # post = $posts[id]
     object = SolarObject.find(id)
 
     # manipulate the variable to be the new data
@@ -85,7 +82,6 @@ class SolarObjectsController < Sinatra::Base
 
     id = params[:id].to_i
 
-    # $posts.delete_at(id)
     SolarObject.destroy(id)
 
     redirect '/index'

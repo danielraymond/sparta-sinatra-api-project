@@ -3,3 +3,7 @@
 <p><%= @object.radius %></p>
 
 <a href="/index/<%= @object.id %>/edit">Edit</a>
+<form action="<%= @object.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" name="name" value="Delete">
+</form>
