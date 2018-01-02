@@ -1,0 +1,45 @@
+require 'json'
+require 'httparty'
+
+class NeoAPI
+  include HTTParty
+  attr_accessor :nasa_data_today, :current_date
+
+  base_uri 'https://api.nasa.gov/neo/rest/v1/feed'
+
+  def initialize
+    d = DateTime.now
+    @current_date = d.strftime("%Y-%m-%d")
+    get_nasa_neo_data(@current_date)
+  end
+
+  def get_nasa_neo_data(current_date)
+    @nasa_data_today = JSON.parse(self.class.get("?start_date=#{current_date}&end_date=#{current_date}&api_key=ZTrkZpPB61MRLR16vCn7HkAJsSQAKeCMkQmgBW0s").body)
+  end
+
+  def get_number_of_neos
+    @nasa_data_today['element_count']
+  end
+
+  def get_estimated_diameter_min
+    @nasa_data_today['near_earth_objects'][current_date][1]['estimated_diameter']['meters']['estimated_diameter_min']
+  end
+
+  def get_biggest
+    biggest_diameter = 0
+    @nasa_data_today['near_earth_objects'][current_date].each do |neo|
+      if neo['estimated_diameter']['meters']['estimated_diameter_min'] > biggest_diameter
+        biggest_diameter = neo['estimated_diameter']['meters']['estimated_diameter_min']
+      end
+    end
+    @nasa_data_today['near_earth_objects'][current_date].each do |neo|
+      if neo['estimated_diameter']['meters']['estimated_diameter_min'] == biggest_diameter
+        return neo
+      end
+    end
+  end
+
+end
+
+x = NeoAPI.new
+p x.get_biggest
