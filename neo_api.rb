@@ -10,11 +10,15 @@ class NeoAPI
   def initialize
     d = DateTime.now
     @current_date = d.strftime("%Y-%m-%d")
-    get_nasa_neo_data(@current_date)
+    get_nasa_neo_api_data(@current_date)
   end
 
-  def get_nasa_neo_data(current_date)
+  def get_nasa_neo_api_data(current_date)
     @nasa_data_today = JSON.parse(self.class.get("?start_date=#{current_date}&end_date=#{current_date}&api_key=ZTrkZpPB61MRLR16vCn7HkAJsSQAKeCMkQmgBW0s").body)
+  end
+
+  def get_neo_data
+    @nasa_data_today['near_earth_objects'][current_date]
   end
 
   def get_number_of_neos
@@ -39,7 +43,23 @@ class NeoAPI
     end
   end
 
+  def get_fastest
+    fastest = 0.0
+    @nasa_data_today['near_earth_objects'][current_date].each do |neo|
+      if neo['close_approach_data'].first['relative_velocity']['miles_per_hour'].to_f > fastest
+        fastest = neo['close_approach_data'].first['relative_velocity']['miles_per_hour'].to_f
+      end
+    end
+    @nasa_data_today['near_earth_objects'][current_date].each do |neo|
+      if neo['close_approach_data'].first['relative_velocity']['miles_per_hour'].to_f == fastest
+        return neo
+      end
+    end
+  end
+
 end
 
 x = NeoAPI.new
-p x.get_biggest
+p x.get_neo_data
+p "---------------------------------------------------------"
+p x.get_fastest
