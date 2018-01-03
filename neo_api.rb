@@ -57,9 +57,23 @@ class NeoAPI
     end
   end
 
+  def get_closest
+    closest = @nasa_data_today['near_earth_objects'][current_date].first['close_approach_data'].first['miss_distance']['astronomical'].to_f
+    @nasa_data_today['near_earth_objects'][current_date].each do |neo|
+      if closest > neo['close_approach_data'].first['miss_distance']['astronomical'].to_f
+        closest = neo['close_approach_data'].first['miss_distance']['astronomical'].to_f
+      end
+    end
+    @nasa_data_today['near_earth_objects'][current_date].each do |neo|
+      if neo['close_approach_data'].first['miss_distance']['astronomical'].to_f == closest
+        return neo
+      end
+    end
+  end
+
 end
 
 x = NeoAPI.new
 p x.get_neo_data
 p "---------------------------------------------------------"
-p x.get_fastest
+p x.get_closest
