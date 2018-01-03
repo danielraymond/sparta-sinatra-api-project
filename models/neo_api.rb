@@ -25,12 +25,8 @@ class NeoAPI
     @nasa_data_today['element_count']
   end
 
-  def get_estimated_diameter_min
-    @nasa_data_today['near_earth_objects'][current_date][1]['estimated_diameter']['meters']['estimated_diameter_min']
-  end
-
   def get_biggest
-    biggest_diameter = 0
+    biggest_diameter = 0.0
     @nasa_data_today['near_earth_objects'][current_date].each do |neo|
       if neo['estimated_diameter']['meters']['estimated_diameter_min'] > biggest_diameter
         biggest_diameter = neo['estimated_diameter']['meters']['estimated_diameter_min']
@@ -73,7 +69,7 @@ class NeoAPI
 
 end
 
-x = NeoAPI.new
-p x.get_neo_data
-p "---------------------------------------------------------"
-p x.get_closest
+# x = NeoAPI.new
+# p x.get_neo_data
+# p "---------------------------------------------------------"
+# p x.get_closest
