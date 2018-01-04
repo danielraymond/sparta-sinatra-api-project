@@ -35,3 +35,15 @@ body {
   font-family: arial;
   text-align: center;
 }
+
+.show-page {
+  text-align: left;
+}
+
+.edit-page {
+  text-align: left;
+}
+
+.new-page {
+  text-align: left;
+}
