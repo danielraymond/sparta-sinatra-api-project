@@ -26,7 +26,7 @@
   <th>Gravitational Acceleration (m/s^2)</th>
   <th>Planet Moon Orbits</th>
   <% @solar_objects.each do |object| %>
-  <% if object.planet != nil %>
+  <% if object.planet != nil && object.planet != "" %>
   <tr>
     <td><a href="/index/<%= object.id %>"><%= object.title %></a></td>
     <td><%= object.radius %></td>

@@ -5,7 +5,13 @@
   </div>
   <div>
     <label>Object Type</label>
-    <input type="text" name="object_type" placeholder="Enter the object type" value="<%= @object.object_type %>">
+    <!-- <input type="text" name="object_type" placeholder="Enter the object type" value="<%= @object.object_type %>"> -->
+    <select>
+      <option value="<%= @object.object_type %>">Gas Giant</option>
+      <option value="<%= @object.object_type %>">Ice Giant</option>
+      <option value="<%= @object.object_type %>">Terrestrial Planet</option>
+      <option value="<%= @object.object_type %>">Moon</option>
+    </select>
   </div>
   <div>
     <label>Radius</label>
