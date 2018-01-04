@@ -1,15 +1,15 @@
 class SolarObject
 
-  attr_accessor :id, :title, :object_type, :radius
+  attr_accessor :id, :title, :object_type, :radius, :mass, :gravity, :planet
 
   def save
 
     conn = SolarObject.open_connection
 
     if(!self.id)
-      sql = "INSERT INTO object (title, object_type, radius) VALUES ('#{self.title}', '#{self.object_type}', '#{self.radius}')"
+      sql = "INSERT INTO object ((title , object_type , radius , mass , gravity , planet) VALUES ('#{self.title}', '#{self.object_type}', '#{self.radius}', '#{self.mass}', '#{self.gravity}', '#{self.planet}')"
     else
-      sql = "UPDATE object SET title='#{self.title}', object_type='#{self.object_type}', radius='#{self.radius}' WHERE id = #{self.id}"
+      sql = "UPDATE object SET title='#{self.title}', object_type='#{self.object_type}', radius='#{self.radius}', mass='#{self.mass}', gravity='#{self.gravity}', planet='#{self.planet}' WHERE id = #{self.id}"
     end
 
     conn.exec(sql)
@@ -30,6 +30,9 @@ class SolarObject
     object.title = object_data['title']
     object.object_type = object_data['object_type']
     object.radius = object_data['radius']
+    object.mass = object_data['mass']
+    object.gravity = object_data['gravity']
+    object.planet = object_data['planet']
 
     object
 
@@ -49,7 +52,7 @@ class SolarObject
 
     conn = self.open_connection
 
-    sql = "SELECT id,title,object_type,radius FROM object ORDER BY id"
+    sql = "SELECT id,title,object_type,radius,mass,gravity,planet FROM object ORDER BY id"
 
     results = conn.exec(sql)
 
@@ -65,11 +68,11 @@ class SolarObject
 
     sql = "SELECT * FROM object WHERE id =#{id} LIMIT 1"
 
-    posts = conn.exec(sql)
+    objects = conn.exec(sql)
 
-    post = self.hydrate(posts[0])
+    object = self.hydrate(posts[0])
 
-    post
+    object
 
   end
 

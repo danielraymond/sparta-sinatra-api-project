@@ -53,6 +53,9 @@ class SolarObjectsController < Sinatra::Base
     object.title = params[:title]
     object.object_type = params[:object_type]
     object.radius = params[:radius]
+    object.mass = params[:mass]
+    object.gravity = params[:gravity]
+    object.planet = params[:planet]
 
     object.save
 
@@ -70,6 +73,10 @@ class SolarObjectsController < Sinatra::Base
     object.title = params[:title]
     object.object_type = params[:object_type]
     object.radius = params[:radius]
+    object.mass = params[:mass]
+    object.gravity = params[:gravity]
+    object.planet = params[:planet]
+
 
     # changed the original data to the new data
     object.save
