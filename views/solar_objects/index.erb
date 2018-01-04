@@ -3,6 +3,7 @@
 <h2>Planets</h2>
 <table>
   <th>Planet Name</th>
+  <th>Planet Type</th>
   <th>Radius (Earth's Radius)</th>
   <th>Mass (Earth's Mass)</th>
   <th>Gravitational Acceleration (m/s^2)</th>
@@ -10,6 +11,7 @@
   <% if object.planet == nil || object.planet == "" %>
   <tr>
     <td><a href="/index/<%= object.id %>"><%= object.title %></a></td>
+    <td><%= object.object_type %></td>
     <td><%= object.radius %></td>
     <td><%= object.mass %></td>
     <td><%= object.gravity %></td>

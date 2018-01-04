@@ -1,11 +1,11 @@
-<form action="/index/<%= @object.id %>" method="POST">
+<form action = "/index" method="POST">
   <div>
     <label>Title</label>
     <input type="text" name="title" placeholder="Enter a title" value="<%= @object.title %>">
   </div>
   <div>
-    <label>Object Type</label>
-    <input type="text" name="object_type" placeholder="Enter the object type" value="<%= @object.object_type %>">
+    <label>Object Type (Planet or Moon)</label>
+    <input type="text" name="object_type" placeholder="Enter the type of solar object" value="<%= @object.object_type %>">
   </div>
   <div>
     <label>Radius</label>
@@ -21,11 +21,10 @@
   </div>
   <div>
     <label>Planet</label>
-    <input type="text" name="planet" placeholder="Enter the planet of the moon" value="<%= @object.radius %>">
-  </div>
+    <input type="text" name="planet" placeholder="Enter the planet of the moon" value="<%= @object.planet %>">
   </div>
   <div>
-    <input type="submit" value="Edit Post">
+    <input type="submit" value="Save Object">
   </div>
 
   <% if(@object.id != "") %>

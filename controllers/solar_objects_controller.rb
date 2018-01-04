@@ -77,7 +77,6 @@ class SolarObjectsController < Sinatra::Base
     object.gravity = params[:gravity]
     object.planet = params[:planet]
 
-
     # changed the original data to the new data
     object.save
 
