@@ -70,7 +70,7 @@ class SolarObject
 
     objects = conn.exec(sql)
 
-    object = self.hydrate(posts[0])
+    object = self.hydrate(objects[0])
 
     object
 
