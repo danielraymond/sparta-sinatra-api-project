@@ -1,5 +1,81 @@
-<h1>This is a test page</h1>
+<h2>Today's Closest Near Earth Object</h2>
+<table>
+  <th>Name</th>
+  <th>Absolute Magnitude (h)</th>
+  <th>Estimated Minimum Diameter (m)</th>
+  <th>Estimated Maximum Diameter (m)</th>
+  <th>Relative Velocity (mph)</th>
+  <th>Miss Distance (AU)</th>
+  <th>Potentially Hazardous (True/False)</th>
+  <tr>
+    <td><%= @closest['name'] %></td>
+    <td><%= @closest['absolute_magnitude_h'] %></td>
+    <td><%= @closest['estimated_diameter']['meters']['estimated_diameter_min'].round(1) %></td>
+    <td><%= @closest['estimated_diameter']['meters']['estimated_diameter_max'].round(1) %></td>
+    <td><%= @closest['close_approach_data'].first['relative_velocity']['miles_per_hour'].to_f.round(1) %></td>
+    <td><%= @closest['close_approach_data'].first['miss_distance']['astronomical'].to_f.round(5) %></td>
+    <td><%= @closest['is_potentially_hazardous_asteroid'].to_s.capitalize %></td>
+  </tr>
+</table>
 
-<div>
-  <%= @test %>
-</div>
+<h2>Today's Fastest Near Earth Object</h2>
+<table>
+  <th>Name</th>
+  <th>Absolute Magnitude (h)</th>
+  <th>Estimated Minimum Diameter (m)</th>
+  <th>Estimated Maximum Diameter (m)</th>
+  <th>Relative Velocity (mph)</th>
+  <th>Miss Distance (AU)</th>
+  <th>Potentially Hazardous (True/False)</th>
+  <tr>
+    <td><%= @fastest['name'] %></td>
+    <td><%= @fastest['absolute_magnitude_h'] %></td>
+    <td><%= @fastest['estimated_diameter']['meters']['estimated_diameter_min'].round(1) %></td>
+    <td><%= @fastest['estimated_diameter']['meters']['estimated_diameter_max'].round(1) %></td>
+    <td><%= @fastest['close_approach_data'].first['relative_velocity']['miles_per_hour'].to_f.round(1) %></td>
+    <td><%= @fastest['close_approach_data'].first['miss_distance']['astronomical'].to_f.round(5) %></td>
+    <td><%= @fastest['is_potentially_hazardous_asteroid'].to_s.capitalize %></td>
+  </tr>
+</table>
+
+<h2>Today's Biggest Near Earth Object</h2>
+<table>
+  <th>Name</th>
+  <th>Absolute Magnitude (h)</th>
+  <th>Estimated Minimum Diameter (m)</th>
+  <th>Estimated Maximum Diameter (m)</th>
+  <th>Relative Velocity (mph)</th>
+  <th>Miss Distance (AU)</th>
+  <th>Potentially Hazardous (True/False)</th>
+  <tr>
+    <td><%= @biggest['name'] %></td>
+    <td><%= @biggest['absolute_magnitude_h'] %></td>
+    <td><%= @biggest['estimated_diameter']['meters']['estimated_diameter_min'].round(1) %></td>
+    <td><%= @biggest['estimated_diameter']['meters']['estimated_diameter_max'].round(1) %></td>
+    <td><%= @biggest['close_approach_data'].first['relative_velocity']['miles_per_hour'].to_f.round(1) %></td>
+    <td><%= @biggest['close_approach_data'].first['miss_distance']['astronomical'].to_f.round(5) %></td>
+    <td><%= @biggest['is_potentially_hazardous_asteroid'].to_s.capitalize %></td>
+  </tr>
+</table>
+
+<h2>All Today's Near Earth Objects</h2>
+<table>
+  <th>Name</th>
+  <th>Absolute Magnitude (h)</th>
+  <th>Estimated Minimum Diameter (m)</th>
+  <th>Estimated Maximum Diameter (m)</th>
+  <th>Relative Velocity (mph)</th>
+  <th>Miss Distance (AU)</th>
+  <th>Potentially Hazardous (True/False)</th>
+  <% @neo.each do |neo| %>
+  <tr>
+    <td><%= neo['name'] %></td>
+    <td><%= neo['absolute_magnitude_h'] %></td>
+    <td><%= neo['estimated_diameter']['meters']['estimated_diameter_min'].round(1) %></td>
+    <td><%= neo['estimated_diameter']['meters']['estimated_diameter_max'].round(1) %></td>
+    <td><%= neo['close_approach_data'].first['relative_velocity']['miles_per_hour'].to_f.round(1) %></td>
+    <td><%= neo['close_approach_data'].first['miss_distance']['astronomical'].to_f.round(5) %></td>
+    <td><%= neo['is_potentially_hazardous_asteroid'].to_s.capitalize %></td>
+  </tr>
+  <% end %>
+</table>

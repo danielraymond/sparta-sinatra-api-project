@@ -15,7 +15,13 @@ class NeoAPIController < Sinatra::Base
 
     @api_data = NeoAPI.new
 
-    @test =  @api_data.get_neo_data[0]['links']['self']
+    @neo = @api_data.get_neo_data
+
+    @fastest = @api_data.get_fastest
+
+    @biggest = @api_data.get_biggest
+
+    @closest = @api_data.get_closest
 
     erb :'neo_api/index'
 

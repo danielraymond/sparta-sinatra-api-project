@@ -67,9 +67,18 @@ class NeoAPI
     end
   end
 
+  def get_name
+    @neo = get_neo_data
+    @name_array = []
+    @neo.each do |neo|
+      p neo['name']
+    end
+    @name_array
+  end
+
 end
 
 # x = NeoAPI.new
 # p x.get_neo_data
 # p "---------------------------------------------------------"
-# p x.get_closest
+# x.get_name
