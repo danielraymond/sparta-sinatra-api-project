@@ -7,7 +7,7 @@ class SolarObject
     conn = SolarObject.open_connection
 
     if(!self.id)
-      sql = "INSERT INTO object ((title , object_type , radius , mass , gravity , planet) VALUES ('#{self.title}', '#{self.object_type}', '#{self.radius}', '#{self.mass}', '#{self.gravity}', '#{self.planet}')"
+      sql = "INSERT INTO object (title , object_type , radius , mass , gravity , planet) VALUES ('#{self.title}', '#{self.object_type}', '#{self.radius}', '#{self.mass}', '#{self.gravity}', '#{self.planet}')"
     else
       sql = "UPDATE object SET title='#{self.title}', object_type='#{self.object_type}', radius='#{self.radius}', mass='#{self.mass}', gravity='#{self.gravity}', planet='#{self.planet}' WHERE id = #{self.id}"
     end
@@ -52,7 +52,7 @@ class SolarObject
 
     conn = self.open_connection
 
-    sql = "SELECT id,title,object_type,radius,mass,gravity,planet FROM object ORDER BY id"
+    sql = "SELECT id,title,object_type,radius,mass,gravity,planet FROM object ORDER BY mass DESC"
 
     results = conn.exec(sql)
 

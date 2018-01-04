@@ -7,7 +7,7 @@
   <th>Mass (Earth's Mass)</th>
   <th>Gravitational Acceleration (m/s^2)</th>
   <% @solar_objects.each do |object| %>
-  <% if object.planet == nil %>
+  <% if object.planet == nil || object.planet == "" %>
   <tr>
     <td><a href="/index/<%= object.id %>"><%= object.title %></a></td>
     <td><%= object.radius %></td>
