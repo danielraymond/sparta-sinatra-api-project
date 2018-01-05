@@ -1,30 +1,30 @@
 <form action = "/index" method="POST">
   <div>
     <label>Name</label>
-    <input type="text" name="title" placeholder="Enter a title" value="<%= @object.title %>">
+    <input type="text" name="title" placeholder="Enter a title" value="<%= @object.title %>" autocomplete="off">
   </div>
   <div>
     <label>Object Type (Planet or Moon)</label>
-    <input type="text" name="object_type" placeholder="Enter the type of solar object" value="<%= @object.object_type %>">
+    <input type="text" name="object_type" placeholder="Enter the type of solar object" value="<%= @object.object_type %>" autocomplete="off">
   </div>
   <div>
     <label>Radius</label>
-    <input type="float" name="radius" placeholder="Enter the radius of the object" value="<%= @object.radius %>">
+    <input type="text" name="radius" placeholder="Enter the radius of the object" value="<%= @object.radius %>" autocomplete="off">
   </div>
   <div>
     <label>Mass</label>
-    <input type="float" name="mass" placeholder="Enter the mass of the object" value="<%= @object.mass %>">
+    <input type="text" name="mass" placeholder="Enter the mass of the object" value="<%= @object.mass %>" autocomplete="off">
   </div>
   <div>
     <label>Gravity</label>
-    <input type="float" name="gravity" placeholder="Enter the gravitational acceleration of the object" value="<%= @object.gravity %>">
+    <input type="text" name="gravity" placeholder="Enter the gravitational acceleration of the object" value="<%= @object.gravity %>" autocomplete="off">
   </div>
   <div>
     <label>Planet</label>
-    <input type="text" name="planet" placeholder="Enter the planet the moon orbits" value="<%= @object.planet %>">
+    <input type="text" name="planet" placeholder="Enter the planet the moon orbits" value="<%= @object.planet %>" autocomplete="off">
   </div>
   <div>
-    <input type="submit" value="Save Object">
+    <input type="submit" value="Edit Object">
   </div>
 
   <% if(@object.id != "") %>

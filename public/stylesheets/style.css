@@ -65,3 +65,7 @@ input {
   height: 20px;
   font-size: 14px;
 }
+
+.name-error {
+  display: none;
+}
