@@ -1,27 +1,27 @@
 <form action = "/index" method="POST">
-  <div>
-    <label>Title</label>
+  <div class="form_div">
+    <label>Name</label>
     <input type="text" name="title" placeholder="Enter a title" value="<%= @object.title %>">
   </div>
-  <div>
+  <div class="form_div">
     <label>Object Type (Planet or Moon)</label>
     <input type="text" name="object_type" placeholder="Enter the type of solar object" value="<%= @object.object_type %>">
   </div>
-  <div>
+  <div class="form_div">
     <label>Radius</label>
     <input type="float" name="radius" placeholder="Enter the radius of the object" value="<%= @object.radius %>">
   </div>
-  <div>
+  <div class="form_div">
     <label>Mass</label>
     <input type="float" name="mass" placeholder="Enter the mass of the object" value="<%= @object.mass %>">
   </div>
-  <div>
+  <div class="form_div">
     <label>Gravity</label>
     <input type="float" name="gravity" placeholder="Enter the gravitational acceleration of the object" value="<%= @object.gravity %>">
   </div>
-  <div>
+  <div class="form_div">
     <label>Planet</label>
-    <input type="text" name="planet" placeholder="Enter the planet of the moon" value="<%= @object.planet %>">
+    <input type="text" name="planet" placeholder="Enter the planet the moon orbits" value="<%= @object.planet %>">
   </div>
   <div>
     <input type="submit" value="Save Object">

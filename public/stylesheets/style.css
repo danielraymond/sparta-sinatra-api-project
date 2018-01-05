@@ -47,3 +47,21 @@ body {
 .new-page {
   text-align: left;
 }
+
+form {
+  margin-left: 10px;
+}
+
+label {
+  display: block;
+  width: 30vw;
+  margin-right: 70vw;
+  margin-top: 5px;
+}
+
+input {
+  display: block;
+  width: 25vw;
+  height: 20px;
+  font-size: 14px;
+}
