@@ -36,16 +36,6 @@ class SolarObjectsController < Sinatra::Base
 
   end
 
-  get '/index/:id/edit'  do
-
-    id = params[:id].to_i
-
-    @object = SolarObject.find(id)
-
-    erb :'solar_objects/edit'
-
-  end
-
   post '/index' do
 
     object = SolarObject.new
@@ -91,6 +81,16 @@ class SolarObjectsController < Sinatra::Base
     SolarObject.destroy(id)
 
     redirect '/index'
+
+  end
+
+  get '/index/:id/edit'  do
+
+    id = params[:id].to_i
+
+    @object = SolarObject.find(id)
+
+    erb :'solar_objects/edit'
 
   end
 
