@@ -70,4 +70,6 @@ input {
   height: 30px;
   background-color: red;
   width: 10vw;
+  margin-left: auto;
+  margin-right: auto;
 }
