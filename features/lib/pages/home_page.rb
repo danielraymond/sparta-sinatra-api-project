@@ -11,4 +11,8 @@ class ProjectHomePage
     click_button('Refresh Info')
   end
 
+  def get_home_page_title
+    find('#neo-title')
+  end
+
 end

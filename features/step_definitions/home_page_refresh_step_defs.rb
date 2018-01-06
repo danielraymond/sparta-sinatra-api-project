@@ -4,9 +4,8 @@ end
 
 When("I click the refresh info button") do
   project_home_page.click_refresh_button
-  sleep 4
 end
 
-Then("The page successfully refreshes") do
-  pending # Write code here that turns the phrase above into concrete actions
+Then("the page successfully refreshes") do
+  expect(project_home_page.get_home_page_title.text).to eq('NASA NEO API Information')
 end

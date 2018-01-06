@@ -11,9 +11,14 @@ class SolarObjectsController < Sinatra::Base
   #   register Sinatra::Reloader
   # end
 
+  enable :sessions
+
   get '/index' do
 
     @solar_objects = SolarObject.all
+
+    @success_message = session[:success_message]
+    session[:success_message] = nil
 
     erb :'solar_objects/index'
 
@@ -50,6 +55,8 @@ class SolarObjectsController < Sinatra::Base
 
     object.save
 
+    session[:success_message] = "Added a new solar object!"
+
     redirect "/index"
 
   end
@@ -70,6 +77,8 @@ class SolarObjectsController < Sinatra::Base
 
     # changed the original data to the new data
     object.save
+
+    session[:success_message] = "Updated a new solar object!"
 
     redirect '/index'
 

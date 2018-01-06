@@ -1,5 +1,9 @@
 <h1>Solar Objects</h1>
-
+<% if @success_message %>
+  <div id="success" style="border: 2px solid green;">
+  <%= @success_message %>
+  </div>
+<% end %>
 <h2>Planets</h2>
 <table>
   <th>Planet Name</th>

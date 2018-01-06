@@ -12,6 +12,8 @@ class NeoAPIController < Sinatra::Base
   #     register Sinatra::Reloader
   # end
 
+  enable :sessions
+
   get '/' do
 
     @api_data = NeoAPI.new
@@ -23,6 +25,9 @@ class NeoAPIController < Sinatra::Base
     @biggest = @api_data.get_biggest
 
     @closest = @api_data.get_closest
+
+    @success_message = session[:success_message]
+    session[:success_message] = nil
 
     erb :'neo_api/index'
 
