@@ -16,7 +16,16 @@ describe 'Solar Object Controller' do
     get "/index"
     expect(last_response).to be_ok
     expect(last_response.body).to include('Solar Objects')
-    expect(last_response.body).to include('Planets')
+  end
+
+  it "solar objects index page contains table headings for the planets and moons tables" do
+    get "/index"
+    expect(last_response.body).to include('<th>Planet Name</th>')
+    expect(last_response.body).to include('<th>Radius (Earth\'s Radius)</th>')
+    expect(last_response.body).to include('<th>Mass (Earth\'s Mass)</th>')
+    expect(last_response.body).to include('<th>Gravitational Acceleration (m/s^2)</th>')
+    expect(last_response.body).to include('<th>Moon Name</th>')
+    expect(last_response.body).to include('<th>Planet Moon Orbits</th>')
   end
 
   it "displays new solar object page" do
@@ -29,6 +38,16 @@ describe 'Solar Object Controller' do
     get '/index/2'
     expect(last_response).to be_ok
     expect(last_response.body).to include('show-page')
+  end
+
+  it "show page includes an edit link" do
+    get '/index/2'
+    expect(last_response.body).to include('<a href="/index/2/edit">Edit</a>')
+  end
+
+  it "show page should have a delete button" do
+    get '/index/2'
+    expect(last_response.body).to include('<input type="hidden" name="_method" value="DELETE">')
   end
 
   it "displays the edit solar object page" do
@@ -62,7 +81,6 @@ describe 'Solar Object Controller' do
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response.body).not_to include('Test for post')
-
   end
 
 end
