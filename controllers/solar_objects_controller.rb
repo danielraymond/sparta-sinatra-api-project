@@ -90,6 +90,8 @@ class SolarObjectsController < Sinatra::Base
 
     SolarObject.destroy(id)
 
+    session[:success_message] = "Successfully deleted solar object!"
+
     redirect '/index'
 
   end
