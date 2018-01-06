@@ -76,4 +76,18 @@ class SolarObject
 
   end
 
+  def self.get_highest_id
+
+    conn = self.open_connection
+
+    sql = "SELECT * FROM object WHERE id = (select MAX(id) FROM object)"
+
+    results = conn.exec(sql)
+
+    result = self.hydrate(results[0])
+
+    result.id.to_i
+
+  end
+
 end

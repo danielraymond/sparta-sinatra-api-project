@@ -48,21 +48,22 @@ describe 'Solar Object Controller' do
 
   it "put request should update an existing solar object" do
     params = params = {:title => 'Earth-update', :object_type => 'Planet', :radius => 1.23, :mass => 4.56, :gravity => 7.89, :planet => ''}
-    put '/index/4', params
+    SolarObject.new
+    @id = SolarObject.get_highest_id
+    put "/index/#{@id}", params
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response.body).to include('Earth-update')
   end
 
   it "delete request should delete a solar object" do
-    delete '/index/4'
-    expect(last_response).to be_redirect
-    follow_redirect!
-    expect(last_response.body).not_to include('Earth-update')
-    delete '/index/5'
+    SolarObject.new
+    @id = SolarObject.get_highest_id
+    delete "/index/#{@id}"
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response.body).not_to include('Test for post')
+
   end
 
 end
