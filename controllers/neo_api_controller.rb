@@ -1,4 +1,5 @@
 require_relative '../models/neo_api.rb'
+require 'sinatra/base'
 
 class NeoAPIController < Sinatra::Base
 
@@ -7,9 +8,9 @@ class NeoAPIController < Sinatra::Base
   # sets the view directory correctly
   set :views, Proc.new { File.join(root, "views") }
 
-  configure :development do
-      register Sinatra::Reloader
-  end
+  # configure :development do
+  #     register Sinatra::Reloader
+  # end
 
   get '/' do
 

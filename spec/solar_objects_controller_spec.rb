@@ -17,7 +17,6 @@ describe 'Solar Object Controller' do
     expect(last_response).to be_ok
     expect(last_response.body).to include('Solar Objects')
     expect(last_response.body).to include('Planets')
-
   end
 
   it "displays new solar object page" do
