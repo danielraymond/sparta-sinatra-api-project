@@ -21,10 +21,6 @@ class NeoAPI
     @nasa_data_today['near_earth_objects'][current_date]
   end
 
-  def get_number_of_neos
-    @nasa_data_today['element_count']
-  end
-
   def get_biggest
     biggest_diameter = 0.0
     @nasa_data_today['near_earth_objects'][current_date].each do |neo|
@@ -67,18 +63,4 @@ class NeoAPI
     end
   end
 
-  def get_name
-    @neo = get_neo_data
-    @name_array = []
-    @neo.each do |neo|
-      p neo['name']
-    end
-    @name_array
-  end
-
 end
-
-# x = NeoAPI.new
-# p x.get_neo_data
-# p "---------------------------------------------------------"
-# x.get_name

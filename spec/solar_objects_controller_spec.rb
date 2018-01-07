@@ -132,6 +132,7 @@ describe 'Solar Object Controller' do
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response.body).to include('Test for post')
+    expect(last_response.body).to include('Added a new solar object!')
   end
 
   it "put request should update an existing solar object" do
@@ -142,6 +143,7 @@ describe 'Solar Object Controller' do
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response.body).to include('Earth-update')
+    expect(last_response.body).to include('Updated a new solar object!')
   end
 
   it "delete request should delete a solar object" do
@@ -151,6 +153,7 @@ describe 'Solar Object Controller' do
     expect(last_response).to be_redirect
     follow_redirect!
     expect(last_response.body).not_to include('Test for post')
+    expect(last_response.body).to include('Successfully deleted solar object!')
   end
 
 end
