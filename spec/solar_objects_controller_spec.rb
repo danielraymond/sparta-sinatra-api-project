@@ -28,32 +28,102 @@ describe 'Solar Object Controller' do
     expect(last_response.body).to include('<th>Planet Moon Orbits</th>')
   end
 
+  it "solar objects index page should include a navbar with all the correct links" do
+    get "/index"
+    expect(last_response.body).to include('<a class="nav-a" href="/">Today\'s Near Earth Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index">Solar Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index/new">New Object</a>')
+  end
+
   it "displays new solar object page" do
     get '/index/new'
     expect(last_response).to be_ok
+  end
+
+  it "displays the new solar object form on the new object page" do
+    get '/index/new'
     expect(last_response.body).to include('newPlanet')
+  end
+
+  it "solar objects new object page should include a navbar with all the correct links" do
+    get '/index/new'
+    expect(last_response.body).to include('<a class="nav-a" href="/">Today\'s Near Earth Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index">Solar Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index/new">New Object</a>')
+  end
+
+  it "solar objects new object form should contain all form options" do
+    get '/index/new'
+    expect(last_response.body).to include('<label>Name</label>')
+    expect(last_response.body).to include('<label>Object Type (Planet or Moon)</label>')
+    expect(last_response.body).to include('<label>Radius</label>')
+    expect(last_response.body).to include('<label>Mass</label>')
+    expect(last_response.body).to include('<label>Gravity</label>')
+    expect(last_response.body).to include('<label>Planet</label>')
+  end
+
+  it "solar objects new object form should contain a submit button" do
+    get '/index/new'
+    expect(last_response.body).to include('<input type="submit" value="Create Object">')
   end
 
   it "displays individual solar objects page" do
     get '/index/2'
     expect(last_response).to be_ok
+  end
+
+  it "solar objects show page includes the object information" do
+    get '/index/2'
     expect(last_response.body).to include('show-page')
   end
 
-  it "show page includes an edit link" do
+  it "solar objects show page includes an edit link" do
     get '/index/2'
     expect(last_response.body).to include('<a href="/index/2/edit">Edit</a>')
   end
 
-  it "show page should have a delete button" do
+  it "solar objects show page should have a delete button" do
     get '/index/2'
     expect(last_response.body).to include('<input type="hidden" name="_method" value="DELETE">')
+  end
+
+  it "solar objects show object page should include a navbar with all the correct links" do
+    get '/index/2'
+    expect(last_response.body).to include('<a class="nav-a" href="/">Today\'s Near Earth Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index">Solar Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index/new">New Object</a>')
   end
 
   it "displays the edit solar object page" do
     get '/index/2/edit'
     expect(last_response).to be_ok
+  end
+
+  it "displays the edit object form on the edit solar object page" do
+    get 'index/2/edit'
     expect(last_response.body).to include('editPlanet')
+  end
+
+  it "solar objects edit object form should contain all form options" do
+    get '/index/2/edit'
+    expect(last_response.body).to include('<label>Name</label>')
+    expect(last_response.body).to include('<label>Object Type (Planet or Moon)</label>')
+    expect(last_response.body).to include('<label>Radius</label>')
+    expect(last_response.body).to include('<label>Mass</label>')
+    expect(last_response.body).to include('<label>Gravity</label>')
+    expect(last_response.body).to include('<label>Planet</label>')
+  end
+
+  it "solar objects edit object page should include a navbar with all the correct links" do
+    get '/index/2/edit'
+    expect(last_response.body).to include('<a class="nav-a" href="/">Today\'s Near Earth Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index">Solar Objects</a>')
+    expect(last_response.body).to include('<a class="nav-a" href="/index/new">New Object</a>')
+  end
+
+  it "solar objects edit object form should contain a submit button" do
+    get '/index/2/edit'
+    expect(last_response.body).to include('<input type="submit" value="Edit Object">')
   end
 
   it "post request to create a new solar object should work" do
