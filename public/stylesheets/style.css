@@ -7,7 +7,6 @@ nav {
   color: black;
   font-size: 18px;
   text-decoration: underline;
-
 }
 
 h2 {
@@ -22,13 +21,21 @@ table {
 th {
   border-width: 1px;
   border-style: solid;
-  font-weight: 1100;
+  height: 36px;
 }
 
 td {
   width: 14vw;
   border-width: 1px;
   border-style: solid;
+}
+
+.planet-table {
+  width: 25vw;
+}
+
+.moon-table {
+  width: 20vw;
 }
 
 body {

@@ -13,10 +13,10 @@
   <% @solar_objects.each do |object| %>
   <% if object.planet == nil || object.planet == "" %>
   <tr>
-    <td><a href="/index/<%= object.id %>"><%= object.title %></a></td>
-    <td><%= object.radius %></td>
-    <td><%= object.mass %></td>
-    <td><%= object.gravity %></td>
+    <td class="planet-table"><a href="/index/<%= object.id %>"><%= object.title %></a></td>
+    <td class="planet-table"><%= object.radius %></td>
+    <td class="planet-table"><%= object.mass %></td>
+    <td class="planet-table"><%= object.gravity %></td>
   </tr>
   <% end %>
   <% end %>
@@ -32,11 +32,11 @@
   <% @solar_objects.each do |object| %>
   <% if object.planet != nil && object.planet != "" %>
   <tr>
-    <td><a href="/index/<%= object.id %>"><%= object.title %></a></td>
-    <td><%= object.radius %></td>
-    <td><%= object.mass %></td>
-    <td><%= object.gravity %></td>
-    <td><%= object.planet %></td>
+    <td class="moon-table"><a href="/index/<%= object.id %>"><%= object.title %></a></td>
+    <td class="moon-table"><%= object.radius %></td>
+    <td class="moon-table"><%= object.mass %></td>
+    <td class="moon-table"><%= object.gravity %></td>
+    <td class="moon-table"><%= object.planet %></td>
   </tr>
   <% end %>
   <% end %>
