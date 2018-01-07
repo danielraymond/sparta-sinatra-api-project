@@ -29,7 +29,7 @@ describe 'NEO API Model' do
   end
 
   it "get neo data should return a hash of all the near earth objects" do
-    expect(@neo_data.get_neo_data).to be_kind_of(Hash)
+    expect(@neo_data.get_neo_data).to be_kind_of(Array)
   end
 
 end
