@@ -16,6 +16,8 @@ class NeoAPIController < Sinatra::Base
 
   get '/' do
 
+    @title = 'Home'
+
     @api_data = NeoAPI.new
 
     @neo = @api_data.get_neo_data

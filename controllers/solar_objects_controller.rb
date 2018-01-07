@@ -15,6 +15,8 @@ class SolarObjectsController < Sinatra::Base
 
   get '/index' do
 
+    @title = 'Solar Objects'
+
     @solar_objects = SolarObject.all
 
     @success_message = session[:success_message]
@@ -26,6 +28,8 @@ class SolarObjectsController < Sinatra::Base
 
   get '/index/new' do
 
+    @title = 'New'
+
     @object = SolarObject.new
 
     erb :'solar_objects/new'
@@ -33,6 +37,8 @@ class SolarObjectsController < Sinatra::Base
   end
 
   get '/index/:id' do
+
+    @title = 'Solar Object'
 
     id = params[:id].to_i
 
@@ -97,6 +103,8 @@ class SolarObjectsController < Sinatra::Base
   end
 
   get '/index/:id/edit'  do
+
+    @title = 'Edit'
 
     id = params[:id].to_i
 
