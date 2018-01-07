@@ -6,10 +6,6 @@ describe NEOAPI do
     @neo_data = NEOAPI.new.neo_current_date_service
   end
 
-  it "print data" do
-    p @neo_data.get_hash_of_api_data
-  end
-
   it "should return a hash with all the api information" do
     expect(@neo_data.get_hash_of_api_data).to be_kind_of(Hash)
   end
@@ -246,9 +242,69 @@ describe NEOAPI do
     end
   end
 
+  it "each relative velocity should be a have 3 keys" do
+    @neo_data.get_relative_velocity.each do |neo|
+      expect(neo.length).to eq(3)
+    end
+  end
+
   it "each relative velocity in kilometers per second should be a string" do
     @neo_data.get_kilometers_per_second.each do |neo|
       expect(neo).to be_kind_of(String)
+    end
+  end
+
+  it "each relative velocity in kilometers per hour should be a string" do
+    @neo_data.get_kilometers_per_hour.each do |neo|
+      expect(neo).to be_kind_of(String)
+    end
+  end
+
+  it "each relative velocity in miles per hour should be a string" do
+    @neo_data.get_miles_per_hour.each do |neo|
+      expect(neo).to be_kind_of(String)
+    end
+  end
+
+  it "each miss distance should be a hash" do
+    @neo_data.get_miss_distance.each do |neo|
+      expect(neo).to be_kind_of(Hash)
+    end
+  end
+
+  it "each miss distance should have 4 keys" do
+    @neo_data.get_miss_distance.each do |neo|
+      expect(neo.length).to eq(4)
+    end
+  end
+
+  it "each miss distance in astronomical units should be a string" do
+    @neo_data.get_astronomical.each do |neo|
+      expect(neo).to be_kind_of(String)
+    end
+  end
+
+  it "each miss distance in lunar units should be a string" do
+    @neo_data.get_lunar.each do |neo|
+      expect(neo).to be_kind_of(String)
+    end
+  end
+
+  it "each miss distance in kilometer units should be a string" do
+    @neo_data.get_kilometers.each do |neo|
+      expect(neo).to be_kind_of(String)
+    end
+  end
+
+  it "each miss distance in mile units should be a string" do
+    @neo_data.get_miles.each do |neo|
+      expect(neo).to be_kind_of(String)
+    end
+  end
+
+  it "each orbiting body should be Earth" do
+    @neo_data.get_orbiting_body.each do |neo|
+      expect(neo).to eq('Earth')
     end
   end
 

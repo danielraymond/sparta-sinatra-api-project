@@ -5,3 +5,4 @@ gem "sinatra"
 gem "rack"
 gem "json"
 gem "httparty"
+gem 'rspec'

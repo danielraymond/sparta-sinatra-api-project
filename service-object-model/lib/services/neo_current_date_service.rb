@@ -6,20 +6,24 @@ class NEOCurrentDateService
 
   base_uri 'https://api.nasa.gov/neo/rest/v1/feed'
 
+  # function to get the current date and call the api function
   def initialize
     d = DateTime.now
     @current_date = d.strftime("%Y-%m-%d")
     get_nasa_neo_api_data(@current_date)
   end
 
+  # function to consume the data from the api using the current date value
   def get_nasa_neo_api_data(current_date)
     @nasa_data_today = JSON.parse(self.class.get("?start_date=#{current_date}&end_date=#{current_date}&api_key=ZTrkZpPB61MRLR16vCn7HkAJsSQAKeCMkQmgBW0s").body)
   end
 
+  # function to get the hash results of the api consumption
   def get_hash_of_api_data
     @nasa_data_today
   end
 
+  # function to get the links hash
   def get_links
     @nasa_data_today['links']
   end
@@ -44,10 +48,11 @@ class NEOCurrentDateService
     @nasa_data_today['near_earth_objects']
   end
 
+  # function to get the array of all the near earth objects for the current day
   def get_date_array
     @nasa_data_today['near_earth_objects'][@current_date]
   end
-
+  
   def get_individual_links
     links = []
     get_date_array.each do |neo|
@@ -252,6 +257,70 @@ class NEOCurrentDateService
     data = []
     get_date_array.each do |neo|
       data << neo['close_approach_data'].first['relative_velocity']['kilometers_per_second']
+    end
+    data
+  end
+
+  def get_kilometers_per_hour
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['relative_velocity']['kilometers_per_hour']
+    end
+    data
+  end
+
+  def get_miles_per_hour
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['relative_velocity']['miles_per_hour']
+    end
+    data
+  end
+
+  def get_miss_distance
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['miss_distance']
+    end
+    data
+  end
+
+  def get_astronomical
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['miss_distance']['astronomical']
+    end
+    data
+  end
+
+  def get_lunar
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['miss_distance']['lunar']
+    end
+    data
+  end
+
+  def get_kilometers
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['miss_distance']['kilometers']
+    end
+    data
+  end
+
+  def get_miles
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['miss_distance']['miles']
+    end
+    data
+  end
+
+  def get_orbiting_body
+    data = []
+    get_date_array.each do |neo|
+      data << neo['close_approach_data'].first['orbiting_body']
     end
     data
   end
