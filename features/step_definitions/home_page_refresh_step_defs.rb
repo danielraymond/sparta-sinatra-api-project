@@ -1,4 +1,4 @@
-Given("I am on the project_home_page") do
+Given("I am on the project home page") do
   project_home_page.visit_home_page
 end
 
