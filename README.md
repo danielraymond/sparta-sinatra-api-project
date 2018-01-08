@@ -6,6 +6,10 @@ In your terminal run the following to install all the gems required to run the a
 
  ` bundle install `
 
+ After this run the following command in your terminal to create and seed the PostgrSQL database:
+
+ ` psql -d solar_objects -a -f seed.sql `
+
 In order to run the unit tests enter the following into your terminal:
 
 ` rspec `
