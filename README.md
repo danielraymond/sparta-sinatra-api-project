@@ -5,19 +5,27 @@ The following steps are for running the app locally on a MacOS terminal.
 
 Clone the repo onto your machine using the following command in your terminal:
 
-` git@github.com:danielraymond/sparta-sinatra-api-project.git `
+```
+git@github.com:danielraymond/sparta-sinatra-api-project.git
+```
 
 In your terminal run the following to install all the gems required to run the application:
 
- ` bundle install `
+```  
+bundle install
+```
 
  After this run the following command in your terminal to create and seed the PostgrSQL database:
 
- ` psql -d solar_objects -a -f seed.sql `
+```
+psql -d solar_objects -a -f seed.sql
+```
 
 To host the app locally run the following when in the project directory:
 
-` rackup `
+```
+rackup
+```
 
 The go to the following link:
 
@@ -25,7 +33,9 @@ http://localhost:9292/
 
 In order to run the unit tests enter the following into your terminal:
 
-` rspec `
+```
+rspec
+```
 
 In order to run the tests in the SOM (service object model) move into the service-object-model directory and enter the following
 previous command into your terminal.
