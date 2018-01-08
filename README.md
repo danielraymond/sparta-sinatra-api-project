@@ -15,7 +15,25 @@ In your terminal run the following to install all the gems required to run the a
 bundle install
 ```
 
- After this run the following command in your terminal to create and seed the PostgrSQL database:
+To create a the database that the app uses type the following command into your terminal to open the PostgreSQL interactive terminal:
+
+```
+psql
+```
+
+And then to create the database:
+
+```
+CREATE DATABASE solar_objects;
+```
+
+To exit the PostgreSQL terminal run;
+
+```
+\q
+```
+
+After this run the following command in your terminal to create and seed the PostgrSQL database:
 
 ```
 psql -d solar_objects -a -f seed.sql
