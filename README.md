@@ -1,7 +1,7 @@
 ## Sinatra Restful Web App with NASA NEO API Homepage Project
 
 ### How to run the app
-The following steps are for running the app locally using on a MacOS terminal.
+The following steps are for running the app locally on a MacOS terminal.
 
 Clone the repo onto your machine using the following command in your terminal:
 
@@ -15,7 +15,7 @@ In your terminal run the following to install all the gems required to run the a
 
  ` psql -d solar_objects -a -f seed.sql `
 
-To host the app locally run the following:
+To host the app locally run the following when in the project directory:
 
 ` rackup `
 
