@@ -45,7 +45,7 @@ To host the app locally run the following when in the project directory:
 rackup
 ```
 
-The go to the following link:
+Then go to the following link:
 
 http://localhost:9292/
 
