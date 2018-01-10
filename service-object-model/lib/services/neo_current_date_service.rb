@@ -1,5 +1,6 @@
 require 'httparty'
 require 'json'
+require_relative '../../../config.rb'
 
 class NEOCurrentDateService
   include HTTParty
@@ -15,7 +16,8 @@ class NEOCurrentDateService
 
   # function to consume the data from the api using the current date value
   def get_nasa_neo_api_data(current_date)
-    @nasa_data_today = JSON.parse(self.class.get("?start_date=#{current_date}&end_date=#{current_date}&api_key=ZTrkZpPB61MRLR16vCn7HkAJsSQAKeCMkQmgBW0s").body)
+    key = APIKEY.new.get_api_key
+    @nasa_data_today = JSON.parse(self.class.get("?start_date=#{current_date}&end_date=#{current_date}&api_key=" + key).body)
   end
 
   # function to get the hash results of the api consumption
@@ -52,7 +54,7 @@ class NEOCurrentDateService
   def get_date_array
     @nasa_data_today['near_earth_objects'][@current_date]
   end
-  
+
   def get_individual_links
     links = []
     get_date_array.each do |neo|

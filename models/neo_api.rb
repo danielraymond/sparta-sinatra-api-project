@@ -1,5 +1,6 @@
 require 'json'
 require 'httparty'
+require_relative '../config.rb'
 
 class NeoAPI
   include HTTParty
@@ -15,7 +16,8 @@ class NeoAPI
 
   # method to consume the data from the nasa api using the current date found in the initialize method
   def get_nasa_neo_api_data(current_date)
-    @nasa_data_today = JSON.parse(self.class.get("?start_date=#{current_date}&end_date=#{current_date}&api_key=ZTrkZpPB61MRLR16vCn7HkAJsSQAKeCMkQmgBW0s").body)
+    key = APIKEY.new.get_api_key
+    @nasa_data_today = JSON.parse(self.class.get("?start_date=#{current_date}&end_date=#{current_date}&api_key=" + key).body)
   end
 
   # method to get all the neos from the api on the current date
