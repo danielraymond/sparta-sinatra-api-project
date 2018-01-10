@@ -111,15 +111,9 @@ A spike test was run where 100 requests were made to the server in 1 second:
 
 * Max request time - 36ms
 
-###### Spike Tests
+###### Soak Tests
 
-A spike test was run where 100 requests were made to the server in 1 second:
-
-* Errors - 0%
-
-* Average request - 15ms
-
-* Max request time - 36ms
+Attempts at soak tests were made however JMeter would crash at the high number of requests that were made a second (830) which was the number of requests at which errros started to appear.
 
 #### Documentation:
 
