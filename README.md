@@ -83,6 +83,44 @@ A SOM was created to test the data consumed from the API was returning the corre
 
 UI tests were written using using the Cucumber testing tool which runs automated acceptance testing. This was used in conjunction with capybara to access parts of the web page for testing using rspec. Tests were done for creating, editing and deleting a solar object.
 
+### Performance testing:
+
+Performance tests were run on the app hosted locally using JMeter. Load, spike and soak tests were run on the solar objects index page to test how many users the server could take in a certain timeframe.
+
+JMeter Documentation - http://jmeter.apache.org/
+
+#### Performance test results
+
+###### Load Test
+
+A load test was run where 10 requests were made to the index page per second for a minute. The results were as follows:
+
+* Errors - 0%
+
+* Average request time - 15ms
+
+* Max request time - 28ms
+
+###### Spike Tests
+
+A spike test was run where 100 requests were made to the server in 1 second:
+
+* Errors - 0%
+
+* Average request - 15ms
+
+* Max request time - 36ms
+
+###### Spike Tests
+
+A spike test was run where 100 requests were made to the server in 1 second:
+
+* Errors - 0%
+
+* Average request - 15ms
+
+* Max request time - 36ms
+
 #### Documentation:
 
 RSPEC - http://rspec.info/documentation/
