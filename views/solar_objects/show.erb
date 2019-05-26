@@ -1,0 +1,15 @@
+<div class="show-page">
+  <h3><%= @object.title %></h3>
+  <p>Object type: <%= @object.object_type %></p>
+  <p>Object radius: <%= @object.radius %> (Units of Earth's radius)</p>
+  <p>Object mass: <%= @object.mass %> (Units of Earth's mass)</p>
+  <p>Object gravitational acceleration: <%= @object.gravity %> (m/s^2)</p>
+  <% if @object.planet != nil && @object.planet != "" %>
+    <p>Planet that the moon orbits: <%= @object.planet %></p>
+  <% end %>
+  <a href="/index/<%= @object.id %>/edit">Edit</a>
+  <form action="<%= @object.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="name" value="Delete">
+  </form>
+</div>

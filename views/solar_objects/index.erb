@@ -1,0 +1,43 @@
+<h1>Solar Objects</h1>
+<% if @success_message %>
+  <div id="success" style="border: 2px solid green;">
+  <%= @success_message %>
+  </div>
+<% end %>
+<h2>Planets</h2>
+<table>
+  <th>Planet Name</th>
+  <th>Radius (Earth's Radius)</th>
+  <th>Mass (Earth's Mass)</th>
+  <th>Gravitational Acceleration (m/s^2)</th>
+  <% @solar_objects.each do |object| %>
+  <% if object.planet == nil || object.planet == "" %>
+  <tr>
+    <td class="planet-table"><a href="/index/<%= object.id %>"><%= object.title %></a></td>
+    <td class="planet-table"><%= object.radius %></td>
+    <td class="planet-table"><%= object.mass %></td>
+    <td class="planet-table"><%= object.gravity %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>
+
+<h2>Moons</h2>
+<table>
+  <th>Moon Name</th>
+  <th>Radius (Earth's Radius)</th>
+  <th>Mass (Earth's Mass)</th>
+  <th>Gravitational Acceleration (m/s^2)</th>
+  <th>Planet Moon Orbits</th>
+  <% @solar_objects.each do |object| %>
+  <% if object.planet != nil && object.planet != "" %>
+  <tr>
+    <td class="moon-table"><a href="/index/<%= object.id %>"><%= object.title %></a></td>
+    <td class="moon-table"><%= object.radius %></td>
+    <td class="moon-table"><%= object.mass %></td>
+    <td class="moon-table"><%= object.gravity %></td>
+    <td class="moon-table"><%= object.planet %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>
